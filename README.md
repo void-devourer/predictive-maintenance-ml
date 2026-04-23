@@ -56,7 +56,7 @@ In a factory with 10,000 machines:
 - Specific recommended actions for each failure type
 
 ## Author
-Piyush Kumar 
+Piyush Kumar Gupta 
 B.Tech Mechanical Engineering 
 IIT Goa
 
