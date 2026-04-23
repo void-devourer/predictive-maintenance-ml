@@ -55,12 +55,21 @@ In a factory with 10,000 machines:
 - Near zero false alerts
 - Specific recommended actions for each failure type
 
+## Project Structure
+superstore-sales-analysis/
+│
+├── data/                        # Dataset
+├── superstore_analysis.ipynb    # Full analysis notebook
+└── app.py                       # Streamlit dashboard
+
+## How to Run
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+
 ## Author
-Piyush Kumar Gupta 
-
-B.Tech Mechanical Engineering 
-
-IIT Goa
+**Piyush Kumar** — Mechanical Engineering, IIT Goa
 
 
 
