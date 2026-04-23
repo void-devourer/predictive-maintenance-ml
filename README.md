@@ -58,7 +58,6 @@ In a factory with 10,000 machines:
 ## Project Structure
 superstore-sales-analysis/
 
-│
 ├── data/                        # Dataset
 
 ├── superstore_analysis.ipynb    # Full analysis notebook
