@@ -37,6 +37,13 @@ Without physics features, Logistic Regression was best. After adding
 physics features, Random Forest achieved similar detection with 284x
 fewer false alarms.
 
+## Tech Stack
+- Python
+- Pandas, NumPy
+- Scikit-learn
+- Matplotlib, Seaborn
+- Streamlit
+
 ## Dataset
 AI4I 2020 Predictive Maintenance Dataset
 - 10,000 machine observations
@@ -53,10 +60,5 @@ Piyush Kumar
 B.Tech Mechanical Engineering
 IIT Goa
 
-## Tech Stack
-- Python
-- Pandas, NumPy
-- Scikit-learn
-- Matplotlib, Seaborn
-- Streamlit
+
 
