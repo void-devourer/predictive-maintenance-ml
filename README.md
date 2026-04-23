@@ -44,4 +44,3 @@ fewer false alarms.
 - Matplotlib, Seaborn
 - Streamlit
 
-## Project Structure
