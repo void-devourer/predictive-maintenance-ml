@@ -57,7 +57,9 @@ In a factory with 10,000 machines:
 
 ## Author
 Piyush Kumar Gupta 
+
 B.Tech Mechanical Engineering 
+
 IIT Goa
 
 
