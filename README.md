@@ -37,6 +37,22 @@ Without physics features, Logistic Regression was best. After adding
 physics features, Random Forest achieved similar detection with 284x
 fewer false alarms.
 
+## Dataset
+AI4I 2020 Predictive Maintenance Dataset
+- 10,000 machine observations
+- Features: Temperature, Rotational Speed, Torque, Tool Wear
+
+## Real World Impact
+In a factory with 10,000 machines:
+- Detects ~800 of every 1000 failing machines
+- Near zero false alerts
+- Specific recommended actions for each failure type
+
+## Author
+Piyush Kumar
+B.Tech Mechanical Engineering
+IIT Goa
+
 ## Tech Stack
 - Python
 - Pandas, NumPy
