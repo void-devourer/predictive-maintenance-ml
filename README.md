@@ -2,7 +2,7 @@
 
 An end-to-end predictive maintenance platform that combines **machine learning, physics-based feature engineering, retrieval-augmented generation (RAG), and generative AI** to predict industrial machine failure risk and provide contextual maintenance explanations.
 
-The system exposes a **FastAPI backend**, stores prediction history in **PostgreSQL**, and provides an interactive **Streamlit dashboard**. The backend is deployed on **Render**.
+The system exposes a **FastAPI backend**, stores prediction history and maintenance knowledge in **Supabase PostgreSQL**, and provides an interactive **Streamlit dashboard**. The backend and dashboard are deployed on **Render**.
 
 ---
 
@@ -32,38 +32,40 @@ Machine Learning Model
           Gemini AI Explanation
                 │
                 ▼
-        PostgreSQL Prediction History
+     Supabase PostgreSQL Storage
                 │
                 ▼
           Streamlit Dashboard
 ```
 
 ---
+
 ## 🚀 Live Demo
 
 - **Streamlit Dashboard:** https://industrialai-dashboard.onrender.com
 - **FastAPI Backend:** https://industrialai-predictive-maintenance.onrender.com
 - **API Documentation:** https://industrialai-predictive-maintenance.onrender.com/docs
 
-  
+---
+
 ## ✨ Key Features
 
 ### 🤖 Machine Learning Prediction
 
 The system predicts whether a machine is likely to experience failure based on operating conditions including:
 
-* Air temperature
-* Process temperature
-* Rotational speed
-* Torque
-* Tool wear
-* Machine type
+- Air temperature
+- Process temperature
+- Rotational speed
+- Torque
+- Tool wear
+- Machine type
 
 The model returns:
 
-* Failure prediction
-* Failure probability
-* Risk level
+- Failure prediction
+- Failure probability
+- Risk level
 
 ---
 
@@ -71,9 +73,9 @@ The model returns:
 
 In addition to raw machine measurements, the system derives additional features representing machine operating behavior, including:
 
-* Power
-* Temperature difference
-* Wear progression
+- Power
+- Temperature difference
+- Wear progression
 
 These features provide additional information about the physical operating state of the machine.
 
@@ -81,7 +83,7 @@ These features provide additional information about the physical operating state
 
 ### 📚 Maintenance Knowledge Retrieval
 
-The system maintains a PostgreSQL-based collection of maintenance knowledge.
+The system maintains a maintenance knowledge collection in Supabase PostgreSQL.
 
 For each prediction, relevant maintenance information is retrieved based on the predicted condition and machine operating parameters.
 
@@ -101,26 +103,26 @@ The explanation covers:
 
 The AI is explicitly instructed to:
 
-* Treat predictions as risk indicators rather than guarantees
-* Avoid inventing manufacturer limits
-* Avoid unsupported numerical operating limits
-* Base recommendations on retrieved maintenance knowledge
-* Keep recommendations practical and concise
+- Treat predictions as risk indicators rather than guarantees
+- Avoid inventing manufacturer limits
+- Avoid unsupported numerical operating limits
+- Base recommendations on retrieved maintenance knowledge
+- Keep recommendations practical and concise
 
 ---
 
-### 🗄️ PostgreSQL Prediction History
+### 🗄️ Supabase PostgreSQL Prediction History
 
-Every prediction is stored in PostgreSQL along with:
+Every prediction is stored in Supabase PostgreSQL along with:
 
-* Timestamp
-* Machine type
-* Machine operating parameters
-* Physics-derived features
-* Prediction
-* Failure probability
-* Risk level
-* AI maintenance explanation
+- Timestamp
+- Machine type
+- Machine operating parameters
+- Physics-derived features
+- Prediction
+- Failure probability
+- Risk level
+- AI maintenance explanation
 
 This allows predictions to be reviewed after they are generated.
 
@@ -130,17 +132,17 @@ This allows predictions to be reviewed after they are generated.
 
 The Streamlit frontend provides:
 
-* Machine input controls
-* Prediction results
-* Failure probability
-* Risk classification
-* Prediction history
-* Filtering by machine type
-* Filtering by risk level
-* Filtering by prediction
-* Expandable AI maintenance analysis
-* CSV export
-* Analytics dashboard
+- Machine input controls
+- Prediction results
+- Failure probability
+- Risk classification
+- Prediction history
+- Filtering by machine type
+- Filtering by risk level
+- Filtering by prediction
+- Expandable AI maintenance analysis
+- CSV export
+- Analytics dashboard
 
 ---
 
@@ -186,7 +188,8 @@ This prevents an external generative-AI service failure from taking down the cor
               │                 │                 │
               ▼                 ▼                 ▼
       ┌──────────────┐  ┌───────────────┐  ┌──────────────┐
-      │ ML Predictor │  │ Knowledge RAG │  │  PostgreSQL  │
+      │ ML Predictor │  │ Knowledge RAG │  │   Supabase   │
+      │              │  │               │  │  PostgreSQL  │
       └──────┬───────┘  └───────┬───────┘  └──────────────┘
              │                  │
              └──────────┬───────┘
@@ -201,18 +204,19 @@ This prevents an external generative-AI service failure from taking down the cor
 
 ## 🛠️ Technology Stack
 
-| Component           | Technology                 |
-| ------------------- | -------------------------- |
-| Programming         | Python                     |
-| Machine Learning    | Scikit-learn               |
-| Backend API         | FastAPI                    |
-| Database            | PostgreSQL                 |
-| Frontend            | Streamlit                  |
-| Generative AI       | Google Gemini API          |
+| Component | Technology |
+| --- | --- |
+| Programming | Python |
+| Machine Learning | Scikit-learn |
+| Backend API | FastAPI |
+| Database | Supabase PostgreSQL |
+| Frontend | Streamlit |
+| Generative AI | Google Gemini API |
 | Knowledge Retrieval | PostgreSQL-based retrieval |
-| Data Processing     | Pandas                     |
-| Deployment          | Render                     |
-| Version Control     | Git / GitHub               |
+| Data Processing | Pandas |
+| Backend Deployment | Render |
+| Frontend Deployment | Render |
+| Version Control | Git / GitHub |
 
 ---
 
@@ -277,7 +281,7 @@ Risk Level
 
 ### 4. Knowledge Retrieval
 
-Relevant maintenance information is retrieved from the knowledge database.
+Relevant maintenance information is retrieved from the maintenance knowledge stored in Supabase PostgreSQL.
 
 ### 5. AI Explanation
 
@@ -285,7 +289,7 @@ The retrieved knowledge and machine conditions are passed to Gemini to generate 
 
 ### 6. Persistence
 
-The complete prediction and AI explanation are stored in PostgreSQL.
+The complete prediction and AI explanation are stored in Supabase PostgreSQL.
 
 ### 7. Visualization
 
@@ -295,7 +299,9 @@ The Streamlit application displays the result and adds it to prediction history.
 
 ## 🌐 Deployment
 
-The FastAPI backend is deployed on Render.
+The FastAPI backend and Streamlit dashboard are deployed on Render.
+
+Supabase PostgreSQL is used for persistent prediction history and maintenance knowledge.
 
 The application can be accessed through the deployed API and Streamlit frontend.
 
@@ -317,7 +323,7 @@ GEMINI_API_KEY=your_gemini_api_key
 API_URL=your_fastapi_api_url
 ```
 
-**Never commit `.env` or API keys to GitHub.**
+**Never commit `.env` files, database credentials, or API keys to GitHub.**
 
 ---
 
@@ -401,7 +407,7 @@ streamlit run streamlit/app.py
 }
 ```
 
-The API returns the machine prediction, probability, risk level, recommended actions, and AI-generated maintenance explanation when the Gemini service is available.
+The API returns the machine prediction, failure probability, risk level, and AI-generated maintenance explanation when the Gemini service is available.
 
 ---
 
@@ -409,15 +415,15 @@ The API returns the machine prediction, probability, risk level, recommended act
 
 Potential improvements include:
 
-* More advanced semantic/vector-based knowledge retrieval
-* Automated model retraining
-* Real-time machine sensor integration
-* Model monitoring and drift detection
-* Explainable ML techniques such as SHAP
-* Authentication and role-based access
-* Automated maintenance scheduling
-* Historical trend-based failure forecasting
-* More robust AI evaluation and hallucination monitoring
+- More advanced semantic/vector-based knowledge retrieval
+- Automated model retraining
+- Real-time machine sensor integration
+- Model monitoring and drift detection
+- Explainable ML techniques such as SHAP
+- Authentication and role-based access
+- Automated maintenance scheduling
+- Historical trend-based failure forecasting
+- More robust AI evaluation and hallucination monitoring
 
 ---
 
@@ -425,4 +431,6 @@ Potential improvements include:
 
 The goal of this project is to demonstrate how **machine learning, engineering-domain knowledge, backend APIs, databases, retrieval systems, and generative AI** can be combined into a practical industrial AI application.
 
-Rather than only producing a binary failure prediction, the system attempts to provide an end-to-end workflow from **machine data → risk prediction → contextual explanation → maintenance decision support**.
+Rather than only producing a binary failure prediction, the system attempts to provide an end-to-end workflow from:
+
+**Machine Data → Physics-Based Features → Risk Prediction → Knowledge Retrieval → AI Explanation → Database Storage → Maintenance Decision Support**
