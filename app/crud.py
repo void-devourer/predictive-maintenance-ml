@@ -86,13 +86,14 @@ def get_all_predictions():
     conn.close()
 
     return [
-    {
-        "timestamp": row[0],
-        "machine_type": row[1],
-        "prediction": row[2],
-        "probability": row[3],
-        "risk_level": row[4],
-        "ai_explanation": row[5]
-    }
-    for row in rows
-]
+        {
+            "timestamp": row[0],
+            "machine_type": row[1],
+            "prediction": row[2],
+            "probability": row[3],
+            "risk_level": row[4],
+            "ai_explanation": row[5]
+        }
+        for row in rows
+    ]
+
